@@ -31,10 +31,11 @@ struct ContentView: View {
                                     .foregroundColor(.orange)
                                 .frame(width: geometry.size.width/3 - 20, height: geometry.size.width/3 - 15)
                                 
-                                Image(systemName: moves[index]?.indicator ?? "")
+                                Image(moves[index]?.indicator ?? "")
                                     .resizable()
-                                    .bold()
-                                    .frame(width: 40, height: 40)
+                                    .scaledToFill()
+                                    .aspectRatio(contentMode: .fill)
+//                                    .frame(width: 40, height: 40)
                                     .foregroundColor(.white)
                             }
                             .onTapGesture {
@@ -144,7 +145,7 @@ struct Move {
     let player: Player
     let boardIndex: Int
     var indicator: String {
-        return player == .human ? "xmark" : "circle"
+        return player == .human ? "toe-img" : "tick-img"
     }
 }
 
