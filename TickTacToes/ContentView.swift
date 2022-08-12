@@ -20,10 +20,17 @@ struct ContentView: View {
     var body: some View {
         
         ZStack {
-            Color.gray.edgesIgnoringSafeArea(.all)
+            Color(UIColor.darkGray).edgesIgnoringSafeArea(.all)
+            
             GeometryReader { geometry in
                 VStack {
                     Spacer()
+                    
+                    Text("Tick Tac Toes")
+                        .font(.system(size: 40, weight: .bold))
+                        .foregroundColor(.white)
+                        .padding(.bottom, 20)
+                    
                     LazyVGrid(columns: columns, spacing: 10) {
                         ForEach(0..<9) { index in
                             ZStack {
@@ -34,8 +41,6 @@ struct ContentView: View {
                                 Image(moves[index]?.indicator ?? "")
                                     .resizable()
                                     .scaledToFill()
-                                    .aspectRatio(contentMode: .fill)
-//                                    .frame(width: 40, height: 40)
                                     .foregroundColor(.white)
                             }
                             .onTapGesture {
